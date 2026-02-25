@@ -1,6 +1,6 @@
 import { state } from './config.js';
 import { initChart, startStage1Previews, switchStage, goToStage2, goToStage3 } from './ui.js';
-import { buildModel, startTraining, runBulkInference } from './ai.js';
+import { buildModel, startTraining, runBulkEvaluation } from './ai.js';
 
 // Initialization run on load
 async function init() {
@@ -61,7 +61,7 @@ document.getElementById('nav-s3').onclick = () => {
 document.getElementById('btnGoStage2').onclick = goToStage2;
 document.getElementById('btnTrain').onclick = startTraining;
 document.getElementById('btnGoStage3').onclick = goToStage3;
-document.getElementById('btnTest').onclick = runBulkInference;
+document.getElementById('btnEval').onclick = runBulkEvaluation;
 
 // Initialize when module loads
 if (document.readyState === 'loading') {

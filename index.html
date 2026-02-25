@@ -33,13 +33,13 @@
 
         <div class="stage-nav">
             <div class="nav-item active" id="nav-s1">
-                <span class="step-num">1</span> Data Pre-processing
+                <span class="step-num">1</span> Data Preview
             </div>
             <div class="nav-item" id="nav-s2">
-                <span class="step-num">2</span> CNN Training
+                <span class="step-num">2</span> Training
             </div>
             <div class="nav-item" id="nav-s3">
-                <span class="step-num">3</span> Inference
+                <span class="step-num">3</span> Evaluation
             </div>
         </div>
 
@@ -135,13 +135,13 @@
             <div class="text-center" style="margin-top: 15px;">
                 <button class="btn" id="btnTrain">🚀 Start Training (1,200 Data)</button>
                 <button class="btn btn-primary" id="btnGoStage3" style="display:none; margin-left: 10px;">Proceed to
-                    Inference ➔</button>
+                    Evaluation ➔</button>
             </div>
         </div>
 
 
         <!-- ============================================== -->
-        <!-- STAGE 3: Inference -->
+        <!-- STAGE 3: Evaluation -->
         <!-- ============================================== -->
         <div class="stage-content" id="stage3">
             <div class="dash-stats">
@@ -162,20 +162,20 @@
                 </div>
             </div>
 
-            <div class="card flex-1 inference-container">
+            <div class="card flex-1 evaluation-container">
                 <div class="grid-header">
                     <div>
-                        <h3 style="font-size: 1.1rem; margin-bottom: 4px;">🎯 Bulk Inference Test</h3>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 4px;">🎯 Final Evaluation</h3>
                         <p style="font-size: 0.8rem; color: var(--text-muted);">학습에 사용되지 않은 300개의 테스트 데이터로 정답률을 평가합니다.
                         </p>
                     </div>
-                    <button class="btn btn-primary" id="btnTest">Run Inference
+                    <button class="btn btn-primary" id="btnEval">Start Evaluation
                         (300/300)</button>
                 </div>
 
-                <div class="inference-grid" id="infGrid">
+                <div class="evaluation-grid" id="evalGrid">
                     <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
-                        Run Inference 버튼을 눌러 평가를 시작하세요.
+                        Start Evaluation 버튼을 눌러 평가를 시작하세요.
                     </div>
                 </div>
 
@@ -183,11 +183,11 @@
                     <div style="text-align: right;">
                         <div style="font-size: 1.2rem; font-weight: bold; color: var(--text-primary);">Overall Accuracy
                         </div>
-                        <div style="font-size: 0.9rem; color: var(--text-muted);">정답 <span id="infCorrect"
-                                style="color: var(--accent-green);">0</span> / 오답 <span id="infWrong"
+                        <div style="font-size: 0.9rem; color: var(--text-muted);">정답 <span id="evalCorrect"
+                                style="color: var(--accent-green);">0</span> / 오답 <span id="evalWrong"
                                 style="color: var(--accent-red);">0</span></div>
                     </div>
-                    <div class="big-accuracy" id="infAcc">0.0%</div>
+                    <div class="big-accuracy" id="evalAcc">0.0%</div>
                 </div>
             </div>
         </div>

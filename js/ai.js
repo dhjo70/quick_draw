@@ -70,18 +70,18 @@ export async function startTraining() {
     document.getElementById('nav-s2').classList.add('completed');
 }
 
-export async function runBulkInference() {
-    const btn = document.getElementById('btnTest');
+export async function runBulkEvaluation() {
+    const btn = document.getElementById('btnEval');
     btn.disabled = true;
-    btn.innerText = "Running GPU Inference...";
+    btn.innerText = "Running GPU Evaluation...";
 
-    const grid = document.getElementById('infGrid');
+    const grid = document.getElementById('evalGrid');
     grid.innerHTML = ''; // clear
 
     document.getElementById('gpuBadge').classList.replace('idle', 'active');
     await tf.nextFrame();
 
-    // 1. Run full batch inference on test set (lightning fast on GPU)
+    // 1. Run full batch evaluation on test set (lightning fast on GPU)
     const predsTensor = state.model.predict(state.tensors.testXs);
     const predsArgMax = predsTensor.argMax(1);
     const predsArray = predsArgMax.dataSync();
@@ -98,13 +98,13 @@ export async function runBulkInference() {
         if (currentIdx >= state.testData.length) {
             // Update Final Stats
             const accPct = (correctCount / state.testData.length * 100).toFixed(1);
-            document.getElementById('infCorrect').innerText = correctCount;
-            document.getElementById('infWrong').innerText = state.testData.length - correctCount;
-            document.getElementById('infAcc').innerText = accPct + "%";
+            document.getElementById('evalCorrect').innerText = correctCount;
+            document.getElementById('evalWrong').innerText = state.testData.length - correctCount;
+            document.getElementById('evalAcc').innerText = accPct + "%";
 
             document.getElementById('finalResults').classList.add('show');
             document.getElementById('gpuBadge').classList.replace('active', 'idle');
-            btn.innerText = "Inference Complete";
+            btn.innerText = "Evaluation Complete";
             document.getElementById('nav-s3').classList.add('completed');
 
             predsTensor.dispose();
@@ -118,12 +118,12 @@ export async function runBulkInference() {
         if (isCorrect) correctCount++;
 
         const div = document.createElement('div');
-        div.className = `inf-item ${isCorrect ? 'correct' : 'wrong'}`;
+        div.className = `eval-item ${isCorrect ? 'correct' : 'wrong'}`;
 
         const icon = isCorrect ? '✔' : '✘';
         div.innerHTML = `
             <img src="${state.testThumbnails[currentIdx]}">
-            <div class="inf-overlay">${icon}</div>
+            <div class="eval-overlay">${icon}</div>
         `;
         grid.appendChild(div);
         grid.scrollTop = grid.scrollHeight; // Auto-scroll down

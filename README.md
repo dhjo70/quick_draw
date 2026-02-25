@@ -8,12 +8,12 @@ It is specifically designed to be presented on a 4:3 projector (1024x768 resolut
 
 The application is structured into a guided 3-stage interactive wizard:
 
-1. **Stage 1 (Data Pre-processing)**
+1. **Stage 1 (Data Preview)**
    - Visualizes raw input data consisting of 1,500 real human doodles of 🍎 Apples, 🐱 Cats, and ⏰ Clocks.
    - Clarifies the fundamental concept of splitting data into **Training Sets** (1,200 samples) and **Testing Sets** (300 samples).
    - Draws dynamic, high-speed stroke animations to demonstrate how AI must parse imperfect, human-generated sequences.
 
-2. **Stage 2 (CNN Training)**
+2. **Stage 2 (Training)**
    - Leverages **TensorFlow.js (`tfjs`)** with **WebGL GPU Acceleration** directly within the local computer's browser, bypassing the need for cloud infrastructure.
    - Trains a deep CNN in real-time.
    - Renders live Learning Curve charts (Training Loss and Validation Accuracy) via Chart.js.
@@ -31,7 +31,7 @@ The application is structured into a guided 3-stage interactive wizard:
        G --> H["Output Dense<br/>(Units: 3, Softmax)"]
    ```
 
-3. **Stage 3 (Inference)**
+3. **Stage 3 (Evaluation)**
    - Evaluates the fully trained model against the 300 unseen holdout samples.
    - Incrementally builds a massive visual matrix showing the AI's success (✔) and failures (✘) on real test data.
    - Displays the overall Model Accuracy at the end.

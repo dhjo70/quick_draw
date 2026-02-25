@@ -315,8 +315,8 @@ body {
     position: relative;
 }
 
-/* Stage 3: Inference Grid */
-.inference-container {
+/* Stage 3: Evaluation Grid */
+.evaluation-container {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -329,7 +329,7 @@ body {
     margin-bottom: 15px;
 }
 
-.inference-grid {
+.evaluation-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     gap: 6px;
@@ -339,21 +339,21 @@ body {
 }
 
 /* Scrollbar styling */
-.inference-grid::-webkit-scrollbar {
+.evaluation-grid::-webkit-scrollbar {
     width: 6px;
 }
 
-.inference-grid::-webkit-scrollbar-track {
+.evaluation-grid::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
 }
 
-.inference-grid::-webkit-scrollbar-thumb {
+.evaluation-grid::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 3px;
 }
 
-.inf-item {
+.eval-item {
     aspect-ratio: 1;
     background: #fff;
     border-radius: 4px;
@@ -368,23 +368,23 @@ body {
     align-items: center;
 }
 
-.inf-item img {
+.eval-item img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     border-radius: 2px;
 }
 
-.inf-item.correct {
+.eval-item.correct {
     border-color: var(--accent-green);
 }
 
-.inf-item.wrong {
+.eval-item.wrong {
     border-color: var(--accent-red);
     opacity: 0.7;
 }
 
-.inf-overlay {
+.eval-overlay {
     position: absolute;
     bottom: -2px;
     right: -2px;
@@ -399,11 +399,11 @@ body {
     color: #fff;
 }
 
-.inf-item.correct .inf-overlay {
+.eval-item.correct .eval-overlay {
     background: var(--accent-green);
 }
 
-.inf-item.wrong .inf-overlay {
+.eval-item.wrong .eval-overlay {
     background: var(--accent-red);
 }
 
