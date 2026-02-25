@@ -19,6 +19,18 @@ The application is structured into a guided 3-stage interactive wizard:
    - Renders live Learning Curve charts (Training Loss and Validation Accuracy) via Chart.js.
    - Provides an **👀 Live Model Predictions** feed showing how the AI predicts 3 random test samples on-the-fly, visually representing the internal probabilities as it learns.
 
+   **CNN Architecture Topology:**
+   ```mermaid
+   graph TD
+       A["Input Image<br/>(28x28x1)"] --> B["Conv2D<br/>(Filters: 16, Kernel: 3x3, ReLU)"]
+       B --> C["MaxPooling2D<br/>(Pool: 2x2, Strides: 2)"]
+       C --> D["Conv2D<br/>(Filters: 32, Kernel: 3x3, ReLU)"]
+       D --> E["MaxPooling2D<br/>(Pool: 2x2, Strides: 2)"]
+       E --> F["Flatten"]
+       F --> G["Dense<br/>(Units: 64, ReLU)"]
+       G --> H["Output Dense<br/>(Units: 3, Softmax)"]
+   ```
+
 3. **Stage 3 (Inference)**
    - Evaluates the fully trained model against the 300 unseen holdout samples.
    - Incrementally builds a massive visual matrix showing the AI's success (✔) and failures (✘) on real test data.
