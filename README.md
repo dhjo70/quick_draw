@@ -52,10 +52,10 @@ Due to browser CORS policies regarding local file imports (the `dataset.json` fi
 
 ```bash
 # Start a simple Python web server
-python3 -m http.server 8000
+python3 -m http.server 8001
 ```
 Then, open your Chromium or WebKit-based browser and navigate to:
-**`http://localhost:8000`**
+**`http://localhost:8001`**
 
 *Note: For the best performance and GPU acceleration, ensure your browser has hardware acceleration enabled.*
 
