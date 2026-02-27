@@ -1,65 +1,65 @@
-# 🎨 "Quick, Draw!" AI Training Simulator
+# 🎨 "Quick, Draw!" AI 학습 시뮬레이터
 
-This repository contains an educational, interactive web application that visualizes how Convolutional Neural Networks (CNNs) learn to recognize human doodles using the famous [Google "Quick, Draw!" dataset](https://github.com/googlecreativelab/quickdraw-dataset).
+이 저장소는 유명한 [Google "Quick, Draw!" 데이터셋](https://github.com/googlecreativelab/quickdraw-dataset)을 사용하여 합성곱 신경망(CNN)이 인간의 낙서를 인식하는 방법을 학습하는 과정을 시각화한 교육용 대화형 웹 애플리케이션을 포함하고 있습니다.
 
-It is specifically designed to be presented on a 4:3 projector (1024x768 resolution) to demonstrate the fundamentals of Machine Learning (ML) to beginners safely inside a web browser.
+이 애플리케이션은 초보자에게 머신러닝(ML)의 기본 원리를 웹 브라우저 내에서 안전하게 시연하기 위해 4:3 프로젝터(1024x768 해상도) 환경에 맞춰 특별히 설계되었습니다.
 
-## 🚀 Features
+## 🚀 기능
 
-The application is structured into a guided 3-stage interactive wizard:
+이 애플리케이션은 안내식 3단계 대화형 위저드로 구성되어 있습니다:
 
-1. **Stage 1 (Data Preview)**
-   - Visualizes raw input data consisting of 1,500 real human doodles of 🍎 Apples, 🐱 Cats, and ⏰ Clocks.
-   - Clarifies the fundamental concept of splitting data into **Training Sets** (1,200 samples) and **Testing Sets** (300 samples).
-   - Draws dynamic, high-speed stroke animations to demonstrate how AI must parse imperfect, human-generated sequences.
+1. **1단계 (데이터 미리보기)**
+   - 🍎 사과, 🐱 고양이, ⏰ 시계로 구성된 1,500개의 실제 인간 낙서의 원시 입력 데이터를 시각화합니다.
+   - 데이터를 **학습 세트(Training Sets)**(1,200개 샘플)와 **테스트 세트(Testing Sets)**(300개 샘플)로 나누는 기본 개념을 명확히 설명합니다.
+   - 역동적이고 빠른 스트로크 애니메이션을 그려 AI가 불완전한 인간 생성 시퀀스를 어떻게 파싱해야 하는지 보여줍니다.
 
-2. **Stage 2 (Training)**
-   - Leverages **TensorFlow.js (`tfjs`)** with **WebGL GPU Acceleration** directly within the local computer's browser, bypassing the need for cloud infrastructure.
-   - Trains a deep CNN in real-time.
-   - Renders live Learning Curve charts (Training Loss and Validation Accuracy) via Chart.js.
-   - Provides an **👀 Live Model Predictions** feed showing how the AI predicts 3 random test samples on-the-fly, visually representing the internal probabilities as it learns.
+2. **2단계 (학습)**
+   - 클라우드 인프라 없이 로컬 컴퓨터의 브라우저 내에서 직접 **WebGL GPU 가속**과 함께 **TensorFlow.js (`tfjs`)**를 활용합니다.
+   - 심층 CNN을 실시간으로 학습시킵니다.
+   - Chart.js를 통해 실시간 학습 곡선 차트(학습 손실 및 검증 정확도)를 렌더링합니다.
+   - AI가 무작위 테스트 샘플 3개를 실시간으로 예측하는 **👀 실시간 모델 예측** 피드를 제공하여 학습할 때의 내부 확률을 시각적으로 나타냅니다.
 
-   **CNN Architecture Topology:**
+   **CNN 아키텍처 토폴로지:**
    ```mermaid
    graph TD
-       A["Input Image<br/>(28x28x1)"] --> B["Conv2D<br/>(Filters: 16, Kernel: 3x3, ReLU)"]
-       B --> C["MaxPooling2D<br/>(Pool: 2x2, Strides: 2)"]
-       C --> D["Conv2D<br/>(Filters: 32, Kernel: 3x3, ReLU)"]
-       D --> E["MaxPooling2D<br/>(Pool: 2x2, Strides: 2)"]
+       A["입력 이미지<br/>(28x28x1)"] --> B["Conv2D<br/>(필터: 16, 커널: 3x3, ReLU)"]
+       B --> C["MaxPooling2D<br/>(풀링: 2x2, 스트라이드: 2)"]
+       C --> D["Conv2D<br/>(필터: 32, 커널: 3x3, ReLU)"]
+       D --> E["MaxPooling2D<br/>(풀링: 2x2, 스트라이드: 2)"]
        E --> F["Flatten"]
-       F --> G["Dense<br/>(Units: 64, ReLU)"]
-       G --> H["Output Dense<br/>(Units: 3, Softmax)"]
+       F --> G["Dense<br/>(유닛: 64, ReLU)"]
+       G --> H["출력 Dense<br/>(유닛: 3, Softmax)"]
    ```
 
-3. **Stage 3 (Evaluation)**
-   - Evaluates the fully trained model against the 300 unseen holdout samples.
-   - Incrementally builds a massive visual matrix showing the AI's success (✔) and failures (✘) on real test data.
-   - Displays the overall Model Accuracy at the end.
+3. **3단계 (평가)**
+   - 완전히 학습된 모델을 300개의 보지 못한 홀드아웃 샘플로 평가합니다.
+   - 실제 테스트 데이터에서 AI의 성공(✔)과 실패(✘)를 보여주는 거대한 시각적 매트릭스를 점진적으로 구축합니다.
+   - 완료 후 전체 모델의 정확도를 표시합니다.
 
-## 🛠️ Usage
+## 🛠️ 사용법
 
-### 1. Data Preparation (Python)
-First, you must download and prepare the dataset splits from the "Quick, Draw!" API. A Python script is provided to handle this automatically.
+### 1. 데이터 준비 (Python)
+먼저 "Quick, Draw!" API에서 데이터셋 분할을 다운로드하고 준비해야 합니다. 이를 자동으로 처리하는 Python 스크립트가 제공됩니다.
 
 ```bash
-# Requires base python3
+# 기본 python3 필요
 python3 prepare_data.py
 ```
-This script downloads `ndjson` files for the specified categories and creates a `dataset.json` file in your directory (~500KB), containing the 1,500 split records.
+이 스크립트는 지정된 카테고리의 `ndjson` 파일을 다운로드하고 약 500KB 크기의 디렉토리에 1,500개의 분할된 기록이 포함된 `dataset.json` 파일을 생성합니다.
 
-### 2. Running the Visualizer (Local Server)
-Due to browser CORS policies regarding local file imports (the `dataset.json` file), you must run a local HTTP server to host the HTML application.
+### 2. 시각화 도구 실행 (로컬 서버)
+로컬 파일 임포트(`dataset.json` 파일)와 관련된 브라우저 CORS 정책으로 인해 HTML 애플리케이션을 호스팅하려면 로컬 HTTP 서버를 실행해야 합니다.
 
 ```bash
-# Start a simple Python web server
+# 간단한 Python 웹 서버 시작
 python3 -m http.server 8001
 ```
-Then, open your Chromium or WebKit-based browser and navigate to:
+그런 다음 Chromium 또는 WebKit 기반 브라우저를 열고 다음 주소로 이동합니다:
 **`http://localhost:8001`**
 
-*Note: For the best performance and GPU acceleration, ensure your browser has hardware acceleration enabled.*
+*참고: 최고의 성능과 GPU 가속을 위해 브라우저의 하드웨어 가속이 활성화되어 있는지 확인하세요.*
 
-## 📁 Repository Structure
-*   `index.html`: The core visualization interface (HTML/CSS/JS with TensorFlow.js).
-*   `prepare_data.py`: Data ingestion script to pull doodles from Google storage.
-*   `dataset.json`: The compiled dataset generated by `prepare_data.py`.
+## 📁 저장소 구조
+*   `index.html`: 핵심 시각화 인터페이스 (HTML/CSS/JS 및 TensorFlow.js).
+*   `prepare_data.py`: Google 스토리지에서 낙서를 가져오는 데이터 수집 스크립트.
+*   `dataset.json`: `prepare_data.py`에 의해 생성된 컴파일된 데이터셋.
