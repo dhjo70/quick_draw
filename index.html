@@ -9,13 +9,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css?v=7" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <!-- Load main logic as an ES module -->
-    <script type="module" src="js/main.js" defer></script>
+    <script type="module" src="js/main.js?v=6" defer></script>
 </head>
 
 <body>
@@ -49,15 +49,15 @@
         <div class="stage-content active" id="stage1">
 
             <div class="data-stats">
-                <div class="stat-pill" style="border-color: rgba(34, 211, 238, 0.3);">
+                <div class="stat-pill">
                     <div class="num" id="s1-train-count">--</div>
                     <div class="desc">Training Data (학습용)</div>
                 </div>
-                <div class="stat-pill" style="border-color: rgba(244, 114, 182, 0.3);">
-                    <div class="num" style="color: var(--accent-pink);" id="s1-test-count">--</div>
+                <div class="stat-pill">
+                    <div class="num" style="color: var(--accent-red);" id="s1-test-count">--</div>
                     <div class="desc">Test Data (평가용)</div>
                 </div>
-                <div class="stat-pill" style="border-color: rgba(251, 146, 60, 0.3);">
+                <div class="stat-pill">
                     <div class="num" style="color: var(--accent-orange);">3</div>
                     <div class="desc">Categories (분류)</div>
                 </div>
@@ -81,7 +81,7 @@
             <div class="text-center" style="margin-top: 10px;">
                 <button class="btn btn-primary" id="btnGoStage2" disabled>Proceed to Training
                     ➔</button>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;" id="s1-status">Loading data...
+                <p style="font-size: 1.6rem; color: var(--text-muted); margin-top: 10px;" id="s1-status">Loading data...
                 </p>
             </div>
         </div>
@@ -94,7 +94,8 @@
             <div class="card" style="padding: 0; overflow: visible;">
                 <div id="loadingOverlay" style="display: none;">
                     <div class="loader-spinner"></div>
-                    <h3 id="loadingText" style="color: white; font-weight: normal;">Converting data to Tensors...</h3>
+                    <h3 id="loadingText" style="color: var(--text-primary); font-weight: 700;">Converting data to
+                        Tensors...</h3>
                 </div>
             </div>
 
@@ -126,7 +127,7 @@
                     <div class="card-title">👀 Live Model Predictions</div>
                     <div class="live-feed" id="liveFeed"
                         style="flex: 1; display: flex; flex-direction: column; overflow-y: hidden;">
-                        <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 20px;">
+                        <div style="text-align: center; color: var(--text-muted); font-size: 1.3rem; margin-top: 20px;">
                             Waiting for epoch 1...</div>
                     </div>
                 </div>
@@ -152,12 +153,12 @@
                 </div>
                 <div class="dash-box">
                     <div class="label">Model Used</div>
-                    <div class="value" style="color: var(--accent-cyan); font-size: 1.2rem; margin-top: 10px;">
+                    <div class="value" style="color: var(--accent-cyan); font-size: 1.6rem; margin-top: 10px;">
                         CNN<br><span style="font-size:0.8rem;color:var(--text-muted)">Epoch 50</span></div>
                 </div>
                 <div class="dash-box">
                     <div class="label">Hardware</div>
-                    <div class="value" style="color: var(--accent-purple); font-size: 1.2rem; margin-top: 10px;"
+                    <div class="value" style="color: var(--accent-purple); font-size: 1.6rem; margin-top: 10px;"
                         id="valBackend">WebGL GPU</div>
                 </div>
             </div>
@@ -165,8 +166,8 @@
             <div class="card flex-1 evaluation-container">
                 <div class="grid-header">
                     <div>
-                        <h3 style="font-size: 1.1rem; margin-bottom: 4px;">🎯 Final Evaluation</h3>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">학습에 사용되지 않은 300개의 테스트 데이터로 정답률을 평가합니다.
+                        <h3 style="font-size: 1.5rem; margin-bottom: 4px;">🎯 Final Evaluation</h3>
+                        <p style="font-size: 1.5rem; color: var(--text-muted);">학습에 사용되지 않은 300개의 데이터로 모델의 정확도를 평가합니다.
                         </p>
                     </div>
                     <button class="btn btn-primary" id="btnEval">Start Evaluation
@@ -181,9 +182,9 @@
 
                 <div class="final-results" id="finalResults">
                     <div style="text-align: right;">
-                        <div style="font-size: 1.2rem; font-weight: bold; color: var(--text-primary);">Overall Accuracy
+                        <div style="font-size: 1.6rem; font-weight: bold; color: var(--text-primary);">Overall Accuracy
                         </div>
-                        <div style="font-size: 0.9rem; color: var(--text-muted);">정답 <span id="evalCorrect"
+                        <div style="font-size: 1.3rem; color: var(--text-muted);">정답 <span id="evalCorrect"
                                 style="color: var(--accent-green);">0</span> / 오답 <span id="evalWrong"
                                 style="color: var(--accent-red);">0</span></div>
                     </div>

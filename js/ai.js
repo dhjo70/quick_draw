@@ -1,6 +1,6 @@
-import { state, CATEGORIES, IMG_SIZE, MAX_EPOCHS } from './config.js';
-import { updateLiveFeed } from './ui.js';
-import { prepareAllTensors } from './data.js';
+import { state, CATEGORIES, IMG_SIZE, MAX_EPOCHS } from './config.js?v=6';
+import { updateLiveFeed } from './ui.js?v=6';
+import { prepareAllTensors } from './data.js?v=6';
 
 export function buildModel() {
     state.model = tf.sequential();

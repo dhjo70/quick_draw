@@ -1,4 +1,4 @@
-import { state, IMG_SIZE, CATEGORIES } from './config.js';
+import { state, IMG_SIZE, CATEGORIES } from './config.js?v=6';
 
 export function rasterizeToImageData(strokes, canvasSize = 256) {
     let minX = 9999, minY = 9999, maxX = 0, maxY = 0;

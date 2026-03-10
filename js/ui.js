@@ -1,4 +1,4 @@
-import { state, IMG_SIZE, CATEGORIES, EMOJIS, MAX_EPOCHS } from './config.js';
+import { state, IMG_SIZE, CATEGORIES, EMOJIS, MAX_EPOCHS } from './config.js?v=6';
 
 export function switchStage(stageNum) {
     state.currentStage = stageNum;
@@ -167,6 +167,14 @@ export function updateLiveFeed() {
 
 // Chart Initializer
 export function initChart() {
+
+    if (window.Chart) {
+        Chart.defaults.color = '#111827';
+        Chart.defaults.font.size = 16;
+        Chart.defaults.font.weight = 'bold';
+        Chart.defaults.font.family = "'Inter', sans-serif";
+    }
+
     const ctxChart = document.getElementById('trainingChart').getContext('2d');
     state.myChart = new Chart(ctxChart, {
         type: 'line',
@@ -174,25 +182,25 @@ export function initChart() {
         options: {
             responsive: true, maintainAspectRatio: false,
             animation: { duration: 0 },
-            plugins: { legend: { display: true, labels: { color: '#e2e8f0' } } },
+            plugins: { legend: { display: true, labels: { color: '#111827' } } },
             elements: { point: { radius: 0 }, line: { borderWidth: 3, tension: 0.3 } },
             scales: {
                 x: {
                     display: true,
-                    grid: { color: 'rgba(255,255,255,0.05)' },
-                    ticks: { color: '#64748b' }
+                    grid: { color: '#E5E7EB' },
+                    ticks: { color: '#111827' }
                 },
                 y: {
                     type: 'linear', display: true, position: 'left',
-                    grid: { color: 'rgba(255,255,255,0.05)' },
-                    ticks: { color: '#fb923c', font: { family: 'JetBrains Mono' } },
-                    title: { display: true, text: 'Loss', color: '#64748b' }
+                    grid: { color: '#E5E7EB' },
+                    ticks: { color: '#111827', font: { family: 'JetBrains Mono' } },
+                    title: { display: true, text: 'Loss', color: '#111827' }
                 },
                 y1: {
                     type: 'linear', display: true, position: 'right', min: 0, max: 1,
                     grid: { drawOnChartArea: false },
-                    ticks: { color: '#34d399', font: { family: 'JetBrains Mono' }, callback: v => (v * 100).toFixed(0) + '%' },
-                    title: { display: true, text: 'Accuracy', color: '#64748b' }
+                    ticks: { color: '#111827', font: { family: 'JetBrains Mono' }, callback: v => (v * 100).toFixed(0) + '%' },
+                    title: { display: true, text: 'Accuracy', color: '#111827' }
                 }
             }
         }

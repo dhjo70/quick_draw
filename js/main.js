@@ -1,6 +1,6 @@
-import { state } from './config.js';
-import { initChart, startStage1Previews, switchStage, goToStage2, goToStage3 } from './ui.js';
-import { buildModel, startTraining, runBulkEvaluation } from './ai.js';
+import { state } from './config.js?v=6';
+import { initChart, startStage1Previews, switchStage, goToStage2, goToStage3 } from './ui.js?v=6';
+import { buildModel, startTraining, runBulkEvaluation } from './ai.js?v=6';
 
 // Initialization run on load
 async function init() {
